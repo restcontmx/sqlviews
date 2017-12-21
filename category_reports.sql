@@ -9,7 +9,9 @@ CREATE MATERIALIZED VIEW cate_reports AS
         b.move_deta_price as move_deta_price,
         b.move_deta_tax_value as move_deta_tax_value,
         b.move_deta_tax2_value as move_deta_tax2_value,
-        b.move_deta_tax3_value as move_deta_tax3_value
+        b.move_deta_tax3_value as move_deta_tax3_value,
+        a.move_oper_id as move_oper_id,
+        c.item_inco_account_id as item_inco_account_id
     FROM
 		reports_it_tmove a
     INNER JOIN reports_it_tdetamove b
@@ -24,4 +26,3 @@ CREATE MATERIALIZED VIEW cate_reports AS
     CREATE INDEX idx_cate_reports_location ON cate_reports ( location );
     CREATE INDEX idx_cate_reports_move_date ON cate_reports ( move_date )
 
-REFRESH MATERIALIZED VIEW cate_reports;
